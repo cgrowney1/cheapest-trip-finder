@@ -315,7 +315,7 @@ def request_live_flights(api_key: str, origin: str, destination: str, depart_dat
     Not unit tested: it needs the internet and a real key.
     """
     import requests
-    body = {"origin": origin, "destination": destination, "departure_date": depart_date}
+    body: dict = {"origin": origin, "destination": destination, "departure_date": depart_date}
     endpoint = FLIGHTS_URL + "/one-way"
     if return_date != "":
         body["return_date"] = return_date
@@ -580,7 +580,7 @@ def results(state: State) -> Page:
         flight = state.flights[position]
         content.append(format_money(flight.price) + " - " + flight.airline + " - "
                        + describe_stops(flight.stops) + " ")
-        content.append(Button("Details", flight_details, [Argument("flight_number", position)]))
+        content.append(Button("Details", flight_details, Argument("flight_number", position)))
         content.append(LineBreak())
     place = stay_place(state.stay_location, state.destination)
     nights = stay_nights(state)
@@ -974,7 +974,7 @@ assert_equal(
         LineBreak(),
         Header("Flights", 2),
         "$215 - Delta - Nonstop ",
-        Button("Details", flight_details, [Argument("flight_number", 0)]),
+        Button("Details", flight_details, Argument("flight_number", 0)),
         LineBreak(),
         Header("Places to stay near Breckenridge, CO", 2),
         "Hostel near Breckenridge, CO - $45/night - about $135 for 3 night(s) - rating 4.0",
@@ -1003,7 +1003,7 @@ assert_equal(
         LineBreak(),
         Header("Flights", 2),
         "$215 - Delta - Nonstop ",
-        Button("Details", flight_details, [Argument("flight_number", 0)]),
+        Button("Details", flight_details, Argument("flight_number", 0)),
         LineBreak(),
         Header("Places to stay near DEN airport", 2),
         "Hostel near DEN airport - $45/night - about $45 for 1 night(s) (one way: 1 night shown)"
