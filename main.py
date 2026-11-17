@@ -47,9 +47,12 @@ from bakery import assert_equal
 set_site_information(
     author="Connor Growney",
     description="Enter a trip and see the cheapest live flights, then search for a place to stay.",
-    sources=["Drafter documentation", "Ignav flight API documentation",
-             "Claude AI (conversation uploaded to the repository)"],
-    planning="planning.pdf",
+    sources=[Link("Drafter documentation", "https://drafter-edu.github.io/drafter/"),
+             Link("Ignav flight API documentation", "https://ignav.com/docs"),
+             Link("Claude AI (conversation uploaded to the repository)",
+                  "https://github.com/cgrowney1/cheapest-trip-finder/blob/main/"
+                  "claude-conversation.md.pdf")],
+    planning=Link("planning.pdf", "https://cgrowney1.github.io/cheapest-trip-finder/planning.pdf"),
     links=["https://github.com/cgrowney1/cheapest-trip-finder"],
 )
 
